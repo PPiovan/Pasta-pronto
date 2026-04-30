@@ -9,7 +9,7 @@ const Nav = () => {
       <a href="#contacto">CONTACTO</a>
 
       <Link to="/login" className="nav-login">INGRESAR</Link>
-      <Link to="/reservar" className="nav-reserve">RESERVAR</Link>
+      <Link to="/reservas" className="nav-reserve">RESERVAR</Link>
     </nav>
   );
 };

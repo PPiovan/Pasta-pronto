@@ -1,0 +1,15 @@
+En los modelos podemos encontrar como los campos de la tabla y el tipo de dato que tiene
+Se le debe asignar  
+**NOMBRE POR EJEMPLO** id_configuracion: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+
+  nombre de la tabla por ejemplo configuracion_reservas
+  y un timestamp  a data type used to store a specific point in time, typically including both the date and the time of day
+
+  La saque de google para que tengan una idea
+
+  Agregue ademas de eso unos modulos llamados nodemon que supuestamente por lo que lei 
+  reinicia automáticamente la aplicación al detectar cambios en los archivos fuente

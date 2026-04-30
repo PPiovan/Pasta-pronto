@@ -22,7 +22,7 @@ const Header = () => {
           Restaurante exclusivo con reservas online. Disfrutá una noche especial.
         </p>
 
-        <a href="/reservar" className="hero-button">
+        <a href="/reservas" className="hero-button">
           RESERVÁ TU MESA
         </a>
       </div>
