@@ -6,7 +6,7 @@ import Mesas from "../pages/Mesas";
 import Usuarios from "../pages/Usuarios";
 import Login from "../pages/Login";
 import Registro from "../pages/Registro";
-
+import ComoReservar from "../components/home/ComoReservar";
 export const Rutas = () => {
   return (
     <BrowserRouter>
@@ -14,12 +14,14 @@ export const Rutas = () => {
         <Route path="/" element={<Inicio />} />
         <Route path="/inicio" element={<Inicio />} />
 
-        <Route path="/reservas" element={<Reservas />} />
+        <Route path="/reservar" element={<Reservas />} />
         <Route path="/mesas" element={<Mesas />} />
         <Route path="/usuarios" element={<Usuarios />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+
+        <Route path="/comoreservar" element={<ComoReservar />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
