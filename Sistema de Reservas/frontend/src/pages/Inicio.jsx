@@ -1,10 +1,10 @@
-import Header from "../components/layouts/Header";
+import Header from "../components/layouts/Header/Header";
 import Experiencia from "../components/home/Experiencia";
 import MenuDestacado from "../components/home/MenuDestacado";
 import ComoReservar from "../components/home/ComoReservar";
 import Eventos from "../components/home/Eventos";
 import Contacto from "../components/home/Contacto";
-import Footer from "../components/layouts/Footer";
+import Footer from "../components/layouts/Footer/Footer";
 
 const Inicio = () => {
   return (
@@ -15,6 +15,7 @@ const Inicio = () => {
       <ComoReservar />
       <Eventos />
       <Contacto />
+      <Footer/>
     </>
   );
 };
