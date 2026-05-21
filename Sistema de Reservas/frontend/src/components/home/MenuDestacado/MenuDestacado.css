@@ -1,0 +1,59 @@
+.menu {
+  background: #111;
+  color: white;
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.menu-label {
+  display: block;
+  color: #c6a15b;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.menu h2 {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.menu-desc {
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+  color: #ccc;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.menu-card {
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.menu-card h3 {
+  margin: 15px 0 10px 0;
+}
+
+.menu-card p {
+  padding: 0 15px 20px;
+  color: #aaa;
+}

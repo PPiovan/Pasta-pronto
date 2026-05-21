@@ -1,3 +1,5 @@
+import './Contacto.css';
+
 const Contacto = () => {
   return (
     <section id="contacto" className="contacto-eventos">

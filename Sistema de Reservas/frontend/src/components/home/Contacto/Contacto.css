@@ -1,0 +1,55 @@
+.contacto-eventos {
+  background: #111;
+  color: white;
+  padding: 100px 10%;
+}
+
+.contacto-container {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.contacto-info p {
+  color: #ccc;
+}
+
+.contacto-datos {
+  margin-top: 35px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 25px;
+}
+
+.contacto-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: #1b1b1b;
+  color: white;
+  font-size: 14px;
+}
+
+.contacto-form textarea {
+  grid-column: span 2;
+  min-height: 140px;
+  resize: none;
+}
+
+.contacto-form button {
+  grid-column: span 2;
+  background: #183d73;
+  color: white;
+  border: none;
+  padding: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  cursor: pointer;
+}

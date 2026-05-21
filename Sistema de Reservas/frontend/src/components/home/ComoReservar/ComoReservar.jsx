@@ -1,3 +1,5 @@
+import './ComoReservar.css';
+
 const ComoReservar = () => {
   return (
     <section className="section-light">

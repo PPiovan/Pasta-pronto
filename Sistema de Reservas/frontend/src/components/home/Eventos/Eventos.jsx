@@ -1,3 +1,5 @@
+import './Eventos.css';
+
 const Eventos = () => {
   return (
     <section id="eventos" className="eventos">

@@ -6,7 +6,7 @@ import Mesas from "../pages/Mesas";
 import Usuarios from "../pages/Usuarios";
 import Login from "../pages/Login";
 import Registro from "../pages/Registro";
-import ComoReservar from "../components/home/ComoReservar";
+import ComoReservar from "../components/home/ComoReservar/ComoReservar";
 export const Rutas = () => {
   return (
     <BrowserRouter>

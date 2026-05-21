@@ -1,0 +1,50 @@
+.section-dark {
+  background: #0f0f0f;
+  color: white;
+  padding: 90px 12%;
+  text-align: center;
+}
+
+.section-light {
+  background: #f5efe7;
+  color: #111;
+  padding: 90px 12%;
+  text-align: center;
+}
+
+.section-label {
+  display: block;
+  color: #c6a15b;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.section-dark h2,
+.section-light h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.section-dark p,
+.section-light p {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.steps {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.steps article {
+  background: white;
+  padding: 32px;
+  border-radius: 4px;
+}

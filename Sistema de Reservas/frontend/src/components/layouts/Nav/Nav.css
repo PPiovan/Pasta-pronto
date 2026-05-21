@@ -1,0 +1,29 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.nav-login {
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-reserve {
+  background: #183d73;
+  padding: 16px 26px;
+  opacity: 1 !important;
+}

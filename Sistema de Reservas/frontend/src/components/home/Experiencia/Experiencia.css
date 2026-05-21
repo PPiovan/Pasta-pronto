@@ -1,0 +1,53 @@
+.experiencia {
+  background: #f3efe9;
+  padding: 100px 10%;
+}
+
+.exp-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* TEXTO */
+.exp-texto h2 {
+  font-family: Georgia, serif;
+  font-size: 48px;
+  margin: 20px 0;
+  line-height: 1.2;
+}
+
+.exp-texto p {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.exp-label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #3a4a6b;
+  font-weight: bold;
+}
+
+.exp-footer {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: #3a4a6b;
+}
+
+/* GALERIA */
+.exp-galeria {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.exp-galeria img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}

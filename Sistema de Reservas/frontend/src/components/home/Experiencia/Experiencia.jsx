@@ -1,3 +1,5 @@
+import './Experiencia.css';
+
 const Experiencia = () => {
   return (
     <section id="experiencia" className="experiencia">
