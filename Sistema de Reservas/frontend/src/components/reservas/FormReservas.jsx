@@ -88,10 +88,6 @@ const FromReservas = () => {
                 <h1>Formulario de Reservas</h1>
 
                 <label>
-                  Pruebaaaa
-                </label>
-
-                <label>
                   Nombre
                   <input type="text" name="nombre" onChange={handleChangeNombre}/>
                 </label>
