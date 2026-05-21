@@ -5,67 +5,107 @@ import './FromReservas.css';  //<-?
   
 
 const FromReservas = () => {
-const [fecha, setFecha] = useState("");
+
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [mail, setMail] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [fecha, setFecha] = useState("");
   const [horario, setHorario] = useState("");
   const [personas, setPersonas] = useState("");
 
-  const confirmaReserva = ()=>{
-    console.log(fecha);
-    console.log(horario);
-    console.log(personas);
+  const handleChangeNombre = (e)=>{
+    setNombre(e.target.value)
+  }
+  const handleChangeApellido = (e)=>{
+    setApellido(e.target.value)
+  }
+  const handleChangeMail = (e)=>{
+    setMail(e.target.value)
+  }
+  const handleChangeTelefono = (e)=>{
+    setTelefono(e.target.value)
   }
 
   const handleChangeFecha = (e)=>{
     setFecha(e.target.value);
   }
+  const limitesReserva = ()=>{
+    const hoy = new Date();
+
+    // Mínimo (Hoy)
+    const anioMin = hoy.getFullYear();
+    const mesMin = String(hoy.getMonth() + 1).padStart(2, '0');
+    const diaMin = String(hoy.getDate()).padStart(2, '0');
+    const min = `${anioMin}-${mesMin}-${diaMin}`;
+
+    // Máximo (En 2 meses)
+    const fechaMax = new Date();
+    fechaMax.setMonth(hoy.getMonth() + 2);
+
+    const anioMax = fechaMax.getFullYear();
+    const mesMax = String(fechaMax.getMonth() + 1).padStart(2, '0');
+    const diaMax = String(fechaMax.getDate()).padStart(2, '0');
+    const max = `${anioMax}-${mesMax}-${diaMax}`;
+
+    // Devolvemos las dos variables juntas adentro de un objeto
+    return { min, max };
+  }
+
   const handleChangeHorario = (e)=>{
     setHorario(e.target.value);
   }
   const handleChangeCantPersonas = (e)=>{
     setPersonas(e.target.value);
   }
+  //para cuando se hace el submit del form
   const handleConfirmacion = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  confirmaReserva();
-}
+    if(
+      !nombre ||
+      !apellido ||
+      !mail ||
+      !telefono ||
+      !fecha ||
+      !horario ||
+      !personas
+    ){
+      alert("Complete todos los campos.");
+      return;
+    }
+    //esto todavia no esta declarado ni tiene lógica
+    confirmaReserva();
+  }
 
 //completamente robado
-const limitesReserva = ()=>{
-  const hoy = new Date();
 
-  // Mínimo (Hoy)
-  const anioMin = hoy.getFullYear();
-  const mesMin = String(hoy.getMonth() + 1).padStart(2, '0');
-  const diaMin = String(hoy.getDate()).padStart(2, '0');
-  const min = `${anioMin}-${mesMin}-${diaMin}`;
-
-  // Máximo (En 2 meses)
-  const fechaMax = new Date();
-  fechaMax.setMonth(hoy.getMonth() + 2);
-
-  const anioMax = fechaMax.getFullYear();
-  const mesMax = String(fechaMax.getMonth() + 1).padStart(2, '0');
-  const diaMax = String(fechaMax.getDate()).padStart(2, '0');
-  const max = `${anioMax}-${mesMax}-${diaMax}`;
-
-  // Devolvemos las dos variables juntas adentro de un objeto
-  return { min, max };
-}
 
     return (
         <div className = "form-reservas">
-            <h1>Formulario de Reservas</h1>
-            <form>
-                <label>Nombre:</label>
-                <input type="text" name="nombre"/>
-                <label>Apellido:</label>
-                <input type="text" name="apellido"/>
-                <label>Email:</label>
-                <input type="email" name="email"/>
-                <label>Teléfono:</label>
-                <input type="tel" name="telefono"/>
-                <button type="submit">Enviar</button>
+
+            <form onSubmit={handleConfirmacion}>
+                <h1>Formulario de Reservas</h1>
+
+                <label>
+                  Nombre
+                  <input type="text" name="nombre" onChange={handleChangeNombre}/>
+                </label>
+
+                <label>
+                  Apellido
+                  <input type="text" name="apellido" onChange={handleChangeApellido}/>
+                </label>
+
+                <label>
+                  Email
+                  <input type="email" name="email" onChange={handleChangeMail}/>
+                </label>
+
+                <label>
+                  Teléfono
+                  <input type="tel" name="telefono" onChange={handleChangeTelefono} />
+                </label>
 
                 <label>
                     fecha
@@ -78,13 +118,14 @@ const limitesReserva = ()=>{
                 </label>
                 <label>
                     horario
-                    <input type="time" name="horariosReserva" id="" onChange={(e)=>handleChangeHorario(e)}/>
+                    <input type="time" name="horariosReserva" onChange={(e)=>handleChangeHorario(e)}/>
                 </label>
                 <label>
                     Personas
-                <input type="number" name="horariosReserva" id="" min="1" onChange={(e)=>handleChangeCantPersonas(e)}/>
+                <input type="number" name="horariosReserva" min="1" onChange={(e)=>handleChangeCantPersonas(e)}/>
                 </label>
-                    <button type="submit">confirmar reserva</button>
+                
+                <button type="submit">confirmar reserva</button>
             </form>
 
         </div>
