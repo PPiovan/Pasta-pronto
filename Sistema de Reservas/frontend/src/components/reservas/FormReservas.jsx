@@ -22,11 +22,67 @@ const FormReservas = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    console.log(formData);
-  };
+  // Nombre
+  if (formData.nombre.trim() === "") {
+    alert("Ingrese un nombre");
+    return;
+  }
+
+  // Apellido
+  if (formData.apellido.trim() === "") {
+    alert("Ingrese un apellido");
+    return;
+  }
+
+  // Mail
+  if (formData.mail.trim() === "") {
+    alert("Ingrese un email");
+    return;
+  }
+
+  // Validación simple email
+  if (!formData.mail.includes("@")) {
+    alert("Ingrese un email válido");
+    return;
+  }
+
+  // Teléfono
+  if (formData.telefono.trim() === "") {
+    alert("Ingrese un teléfono");
+    return;
+  }
+
+  // Fecha
+  if (formData.fecha === "") {
+    alert("Seleccione una fecha");
+    return;
+  }
+
+  // Horario
+  if (formData.horario === "") {
+    alert("Seleccione un horario");
+    return;
+  }
+
+  // Personas
+  if (formData.personas === "") {
+    alert("Ingrese cantidad de personas");
+    return;
+  }
+
+  if (Number(formData.personas) < 1) {
+    alert("La cantidad mínima es 1");
+    return;
+  }
+
+  console.log(formData);
+
+  alert("Reserva enviada");
+};
+
 
   const limitesReserva = () => {
 
@@ -65,6 +121,7 @@ const FormReservas = () => {
           <input
             type="text"
             name="nombre"
+            required
             onChange={handleChange}
           />
         </label>
@@ -74,6 +131,7 @@ const FormReservas = () => {
           <input
             type="text"
             name="apellido"
+            required
             onChange={handleChange}
           />
         </label>
@@ -83,6 +141,7 @@ const FormReservas = () => {
           <input
             type="email"
             name="mail"
+            required
             onChange={handleChange}
           />
         </label>
@@ -92,6 +151,7 @@ const FormReservas = () => {
           <input
             type="tel"
             name="telefono"
+            required
             onChange={handleChange}
           />
         </label>
@@ -101,6 +161,7 @@ const FormReservas = () => {
           <input
             type="date"
             name="fecha"
+            required
             min={limitesReserva().min}
             max={limitesReserva().max}
             onChange={handleChange}
@@ -112,6 +173,7 @@ const FormReservas = () => {
           <input
             type="time"
             name="horario"
+            required
             onChange={handleChange}
           />
         </label>
@@ -122,6 +184,8 @@ const FormReservas = () => {
             type="number"
             name="personas"
             min="1"
+            max="30"
+            required
             onChange={handleChange}
           />
         </label>
