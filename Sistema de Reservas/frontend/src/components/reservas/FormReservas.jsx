@@ -1,95 +1,139 @@
-import react from 'react';
-import { useState } from 'react';
-import './FromReservas.css';  //<-?
+import React, { useState } from 'react';
+import './FromReservas.css';
 
-  
+const FormReservas = () => {
 
-const FromReservas = () => {
-    const [fecha, setFecha] = useState("");
-    const [horario, setHorario] = useState("");
-    const [personas, setPersonas] = useState("");
+  const [formData, setFormData] = useState({
+    nombre: "",
+    apellido: "",
+    telefono: "",
+    mail: "",
+    fecha: "",
+    horario: "",
+    personas: ""
+  });
 
-  const confirmaReserva = ()=>{
-    console.log(fecha);
-    console.log(horario);
-    console.log(personas);
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  const handleChangeFecha = (e)=>{
-    setFecha(e.target.value);
-  }
-  const handleChangeHorario = (e)=>{
-    setHorario(e.target.value);
-  }
-  const handleChangeCantPersonas = (e)=>{
-    setPersonas(e.target.value);
-  }
-  const handleConfirmacion = (e) => {
-  e.preventDefault();
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
 
-  confirmaReserva();
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    console.log(formData);
+  };
 
-const limitesReserva = ()=>{
-  const hoy = new Date();
+  const limitesReserva = () => {
 
-  
-  const anioMin = hoy.getFullYear();
-  const mesMin = String(hoy.getMonth() + 1).padStart(2, '0');
-  const diaMin = String(hoy.getDate()).padStart(2, '0');
-  const min = `${anioMin}-${mesMin}-${diaMin}`;
+    const hoy = new Date();
 
-  // Máximo (En 2 meses)
-  const fechaMax = new Date();
-  fechaMax.setMonth(hoy.getMonth() + 2);
+    // Fecha mínima = hoy
+    const anioMin = hoy.getFullYear();
+    const mesMin = String(hoy.getMonth() + 1).padStart(2, '0');
+    const diaMin = String(hoy.getDate()).padStart(2, '0');
 
-  const anioMax = fechaMax.getFullYear();
-  const mesMax = String(fechaMax.getMonth() + 1).padStart(2, '0');
-  const diaMax = String(fechaMax.getDate()).padStart(2, '0');
-  const max = `${anioMax}-${mesMax}-${diaMax}`;
+    const min = `${anioMin}-${mesMin}-${diaMin}`;
 
-  // Devolvemos las dos variables juntas adentro de un objeto
-  return { min, max };
-}
+    // Fecha máxima = dentro de 2 meses
+    const fechaMax = new Date();
+    fechaMax.setMonth(hoy.getMonth() + 2);
 
-    return (
-        <div className = "form-reservas">
-            <h1>Formulario de Reservas</h1>
-            <form>
-                <label>Nombre:</label>
-                <input type="text" name="nombre"/>
-                <label>Apellido:</label>
-                <input type="text" name="apellido"/>
-                <label>Email:</label>
-                <input type="email" name="email"/>
-                <label>Teléfono:</label>
-                <input type="tel" name="telefono"/>
-                <button type="submit">Enviar</button>
+    const anioMax = fechaMax.getFullYear();
+    const mesMax = String(fechaMax.getMonth() + 1).padStart(2, '0');
+    const diaMax = String(fechaMax.getDate()).padStart(2, '0');
 
-                <label>
-                    fecha
-                    <input type="date"  
-                    min={limitesReserva().min} 
-                    max={limitesReserva().max} 
-                    name="fechaReserva" 
-                    onChange={(e)=>handleChangeFecha(e)}
-                    />
-                </label>
-                <label>
-                    horario
-                    <input type="time" name="horariosReserva" id="" onChange={(e)=>handleChangeHorario(e)}/>
-                </label>
-                <label>
-                    Personas
-                <input type="number" name="horariosReserva" id="" min="1" onChange={(e)=>handleChangeCantPersonas(e)}/>
-                </label>
-                    <button type="submit">confirmar reserva</button>
-            </form>
+    const max = `${anioMax}-${mesMax}-${diaMax}`;
 
-        </div>
-    );
-}
+    return { min, max };
+  };
 
-export default FromReservas;
+  return (
 
+    <div className="form-reservas">
+
+      <form onSubmit={handleSubmit}>
+
+        <h1>Formulario de Reservas</h1>
+
+        <label>
+          Nombre:
+          <input
+            type="text"
+            name="nombre"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Apellido:
+          <input
+            type="text"
+            name="apellido"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Email:
+          <input
+            type="email"
+            name="mail"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Teléfono:
+          <input
+            type="tel"
+            name="telefono"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Fecha:
+          <input
+            type="date"
+            name="fecha"
+            min={limitesReserva().min}
+            max={limitesReserva().max}
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Horario:
+          <input
+            type="time"
+            name="horario"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Personas:
+          <input
+            type="number"
+            name="personas"
+            min="1"
+            onChange={handleChange}
+          />
+        </label>
+
+        <button type="submit">
+          Confirmar reserva
+        </button>
+
+      </form>
+
+    </div>
+  );
+};
+
+export default FormReservas;
