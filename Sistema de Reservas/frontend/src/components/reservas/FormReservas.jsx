@@ -108,6 +108,7 @@ const handleSubmit = (e) => {
     return { min, max };
   };
 
+
   return (
 
     <div className="form-reservas">
@@ -169,13 +170,26 @@ const handleSubmit = (e) => {
         </label>
 
         <label>
-          Horario:
-          <input
-            type="time"
+        Horario:
+          <select
             name="horario"
             required
             onChange={handleChange}
-          />
+          >
+            <option value="">Seleccione horario</option>
+
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+
+            <option value="20:00">20:00</option>
+            <option value="21:00">21:00</option>
+            <option value="22:00">22:00</option>
+            <option value="23:00">23:00</option>
+            <option value="00:00">00:00</option>
+          </select>
         </label>
 
         <label>
@@ -184,7 +198,7 @@ const handleSubmit = (e) => {
             type="number"
             name="personas"
             min="1"
-            max="30"
+            max="20"
             required
             onChange={handleChange}
           />
