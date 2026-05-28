@@ -5,7 +5,6 @@ const Login = () => {
   return (
     <div>
       <LoginForm />
-      <h1>renderizar componente login form</h1>
     </div>
   )
 }
