@@ -14,7 +14,7 @@ const formDataVacio = {
 const FormReservas = () => {
 
   //uso el objeto de arriba para no repetir codigo
-  const [formData, setFormData] = useState(seteaFormData);
+  const [formData, setFormData] = useState(formDataVacio);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -85,7 +85,7 @@ const handleSubmit = (e) => {
 
   alert("Reserva enviada");
 
-  setFormData(seteaFormData);
+  setFormData(formDataVacio);
 };
 
 
