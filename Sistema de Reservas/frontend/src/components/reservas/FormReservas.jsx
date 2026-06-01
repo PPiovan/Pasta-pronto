@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import './FromReservas.css';
 
+const formDataVacio = {
+  nombre: "",
+  apellido: "",
+  telefono: "",
+  mail: "",
+  fecha: "",
+  horario: "",
+  personas: ""
+};
+
 const FormReservas = () => {
 
-  const [formData, setFormData] = useState({
-    nombre: "",
-    apellido: "",
-    telefono: "",
-    mail: "",
-    fecha: "",
-    horario: "",
-    personas: ""
-  });
+  //uso el objeto de arriba para no repetir codigo
+  const [formData, setFormData] = useState(seteaFormData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,6 +84,8 @@ const handleSubmit = (e) => {
   console.log(formData);
 
   alert("Reserva enviada");
+
+  setFormData(seteaFormData);
 };
 
 
@@ -122,6 +127,7 @@ const handleSubmit = (e) => {
           <input
             type="text"
             name="nombre"
+            value={formData.nombre}
             required
             onChange={handleChange}
           />
@@ -132,16 +138,18 @@ const handleSubmit = (e) => {
           <input
             type="text"
             name="apellido"
+            value={formData.apellido}
             required
             onChange={handleChange}
           />
         </label>
 
         <label>
-          Email:
+          Mail:
           <input
             type="email"
             name="mail"
+            value={formData.mail}
             required
             onChange={handleChange}
           />
@@ -152,6 +160,7 @@ const handleSubmit = (e) => {
           <input
             type="tel"
             name="telefono"
+            value={formData.telefono}
             required
             onChange={handleChange}
           />
@@ -162,6 +171,7 @@ const handleSubmit = (e) => {
           <input
             type="date"
             name="fecha"
+            value={formData.fecha}
             required
             min={limitesReserva().min}
             max={limitesReserva().max}
@@ -173,6 +183,7 @@ const handleSubmit = (e) => {
         Horario:
           <select
             name="horario"
+            value={formData.horario}
             required
             onChange={handleChange}
           >
@@ -197,6 +208,7 @@ const handleSubmit = (e) => {
           <input
             type="number"
             name="personas"
+            value={formData.personas}
             min="1"
             max="20"
             required
