@@ -90,6 +90,11 @@ export const register = async (req, res) => {
             });
         }
 
+        if (formData.password !== formData.confirmPassword) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
+
         const passwordHash = await bcrypt.hash(
             password,
             10
