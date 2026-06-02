@@ -1,8 +1,12 @@
-import "./loginForm.css"
+import "../../styles/loginForm.css"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const LoginForm = () => {
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    const { login } = useAuth();
     const navigate = useNavigate();
     const [mensaje, setMensaje] = useState("");
     const [error, setError] = useState(false);
@@ -33,20 +37,19 @@ const LoginForm = () => {
                 }
             );
 
+      
             const data = await response.json();
 
             if (response.ok) {
                 setError(false);
                 setMensaje(data.mensaje);
 
-                localStorage.setItem(
-                    "usuario",
-                    JSON.stringify(data.usuario)
-                );
-              if (data.usuario.rol === 1) {
+                login(data.usuario);
+
+              if (Number(data.usuario.id_rol) === 1) {
                     navigate("/dashboard");
-                } else if (data.usuario.rol === 3) {
-                    navigate("/mis-reservas");
+                } else {
+                    navigate(from, { replace: true });
                 }
 
             } else {

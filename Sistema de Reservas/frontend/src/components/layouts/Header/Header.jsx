@@ -1,15 +1,12 @@
 import Nav from "../Nav/Nav";
-import './Header.css';
+import '../../../styles/Header.css';
 
 const Header = () => {
   return (
     <header className="hero-header">
       <div className="hero-overlay"></div>
 
-      <div className="hero-top">
-        <h1 className="brand">PASTA PRONTO</h1>
-        <Nav />
-      </div>
+      <Nav/>
 
       <div className="hero-center">
         <span className="hero-subtitle">PASTAS · VINOS · RESERVAS</span>

@@ -1,7 +1,12 @@
 import { Reserva } from "../../models/Reserva.js";
 import { Usuario } from "../../models/Usuario.js";
+import { Horario } from "../../models/Horario.js";
+
 export const crearReserva = async (req, res) => {
     try {
+
+        console.log("BODY RECIBIDO:");
+        console.log(req.body);
 
         const nuevaReserva = await Reserva.create(req.body);
 
@@ -16,23 +21,22 @@ export const crearReserva = async (req, res) => {
         });
 
     }
-
 };
-
-
 
 export const obtenerReservas = async (req, res) => {
     try {
 
         const reservas = await Reserva.findAll({
-            include: {
-                model: Usuario,
-                attributes: [
-                    "nombre",
-                    "apellido",
-                    "email"
-                ]
-            }
+            include: [
+                {
+                    model: Usuario,
+                    attributes: ["nombre", "apellido", "email"]
+                },
+                {
+                    model: Horario,
+                    attributes: ["hora"]
+                }
+            ]
         });
 
         return res.status(200).json(reservas);
@@ -54,7 +58,13 @@ export const obtenerReservasUsuario = async (req, res) => {
         const reservas = await Reserva.findAll({
             where: {
                 id_usuario: req.params.id
-            }
+            },
+            include: [
+                {
+                    model: Horario,
+                    attributes: ["hora"]
+                }
+            ]
         });
 
         return res.status(200).json(reservas);

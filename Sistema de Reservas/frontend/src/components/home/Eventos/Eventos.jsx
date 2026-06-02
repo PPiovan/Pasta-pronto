@@ -1,4 +1,4 @@
-import './Eventos.css';
+import '../../../styles/Eventos.css';
 
 const Eventos = () => {
   return (

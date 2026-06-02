@@ -1,7 +1,8 @@
 .form-reservas {
+
   background: #f3efe9;
   min-height: 100vh;
-  padding: 140px 10% 80px;
+  padding: 130px 10% 80px;
 
   display: flex;
   justify-content: center;
@@ -10,13 +11,13 @@
 
 .form-reservas form {
   width: 100%;
-  max-width: 750px;
+  max-width: 850px;
 
   background: white;
   padding: 50px;
 
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -87,7 +88,7 @@
 .form-reservas button {
   grid-column: span 2;
 
-  background: #183d73;
+  background: linear-gradient(135deg,#183d73,#29589c);
   color: white;
 
   border: none;
@@ -106,7 +107,9 @@
 }
 
 .form-reservas button:hover {
-  background: #10294d;
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 20px rgba(24,61,115,.25);
 }
 
 /* RESPONSIVE */
@@ -131,4 +134,50 @@
   .form-reservas h1 {
     font-size: 32px;
   }
+}
+
+/* RESERVAS SUBTITULO */
+.reserva-subtitle {
+  grid-column: span 2;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 15px;
+
+  margin-bottom: 20px;
+
+  line-height: 1.6;
+}
+
+/* PARA EL TEXTAREA */
+.full-width {
+  grid-column: span 2;
+}
+
+.form-reservas textarea {
+  min-height: 120px;
+
+  padding: 15px;
+
+  border: 1px solid #d8d8d8;
+
+  border-radius: 6px;
+
+  resize: vertical;
+
+  font-size: 14px;
+
+  background: #fafafa;
+
+  transition: .2s;
+}
+
+.form-reservas textarea:focus {
+  outline: none;
+
+  border-color: #183d73;
+
+  background: white;
 }

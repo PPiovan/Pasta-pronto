@@ -1,4 +1,4 @@
-import './ComoReservar.css';
+import '../../../styles/ComoReservar.css';
 
 const ComoReservar = () => {
   return (

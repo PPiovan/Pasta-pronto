@@ -1,5 +1,5 @@
 import React from 'react'
-import './MenuDestacado.css';
+import '../../../styles/MenuDestacado.css';
 
 const MenuDestacado = () => {
   return (

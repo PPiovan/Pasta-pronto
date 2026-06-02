@@ -1,21 +1,38 @@
-import React, { useState } from 'react';
-import './FromReservas.css';
+import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import '../../styles/FromReservas.css';
 
 const formDataVacio = {
-  nombre: "",
-  apellido: "",
-  telefono: "",
-  mail: "",
   fecha: "",
   horario: "",
-  personas: ""
+  personas: "",
+  observaciones: ""
 };
 
 const FormReservas = () => {
 
+  useEffect(() => {
+
+  const obtenerHorarios = async () => {
+
+      const response = await fetch(
+        "http://localhost:3000/api/horarios"
+      );
+
+      const data = await response.json();
+
+      setHorarios(data);
+    };
+
+    obtenerHorarios();
+
+  }, []);
   //uso el objeto de arriba para no repetir codigo
   const [formData, setFormData] = useState(formDataVacio);
-
+  const [horarios, setHorarios] = useState([]);
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -25,67 +42,61 @@ const FormReservas = () => {
     });
   };
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
 
-  // Nombre
-  if (formData.nombre.trim() === "") {
-    alert("Ingrese un nombre");
-    return;
-  }
-
-  // Apellido
-  if (formData.apellido.trim() === "") {
-    alert("Ingrese un apellido");
-    return;
-  }
-
-  // Mail
-  if (formData.mail.trim() === "") {
-    alert("Ingrese un email");
-    return;
-  }
-
-  // Validación simple email
-  if (!formData.mail.includes("@")) {
-    alert("Ingrese un email válido");
-    return;
-  }
-
-  // Teléfono
-  if (formData.telefono.trim() === "") {
-    alert("Ingrese un teléfono");
-    return;
-  }
-
-  // Fecha
   if (formData.fecha === "") {
     alert("Seleccione una fecha");
     return;
   }
 
-  // Horario
   if (formData.horario === "") {
     alert("Seleccione un horario");
     return;
   }
 
-  // Personas
   if (formData.personas === "") {
     alert("Ingrese cantidad de personas");
     return;
   }
 
-  if (Number(formData.personas) < 1) {
-    alert("La cantidad mínima es 1");
-    return;
+  try {
+   const reserva = {
+      id_usuario: user.id,
+      id_horario: Number(formData.horario),
+      fecha: formData.fecha,
+      cantidad_comensales: Number(formData.personas),
+      observaciones: formData.observaciones
+    };
+
+    console.log(reserva);
+
+    const response = await fetch(
+      "http://localhost:3000/api/reservas",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(reserva)
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Error al crear reserva");
+    }
+
+    alert("Reserva creada correctamente");
+
+    navigate("/mis-reservas");
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("No se pudo crear la reserva");
+
   }
-
-  console.log(formData);
-
-  alert("Reserva enviada");
-
-  setFormData(formDataVacio);
 };
 
 
@@ -120,52 +131,10 @@ const handleSubmit = (e) => {
 
       <form onSubmit={handleSubmit}>
 
-        <h1>Formulario de Reservas</h1>
-
-        <label>
-          Nombre:
-          <input
-            type="text"
-            name="nombre"
-            value={formData.nombre}
-            required
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Apellido:
-          <input
-            type="text"
-            name="apellido"
-            value={formData.apellido}
-            required
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Mail:
-          <input
-            type="email"
-            name="mail"
-            value={formData.mail}
-            required
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Teléfono:
-          <input
-            type="tel"
-            name="telefono"
-            value={formData.telefono}
-            required
-            onChange={handleChange}
-          />
-        </label>
-
+        <h1>Reservar Mesa</h1>
+        <p className="reserva-subtitle">
+          Seleccioná fecha, horario y cantidad de comensales.
+        </p>
         <label>
           Fecha:
           <input
@@ -179,40 +148,51 @@ const handleSubmit = (e) => {
           />
         </label>
 
-        <label>
-        Horario:
+       <label>
+          Horario:
+
           <select
             name="horario"
             value={formData.horario}
             required
             onChange={handleChange}
           >
-            <option value="">Seleccione horario</option>
+            <option value="">
+              Seleccione horario
+            </option>
 
-            <option value="11:00">11:00</option>
-            <option value="12:00">12:00</option>
-            <option value="13:00">13:00</option>
-            <option value="14:00">14:00</option>
-            <option value="15:00">15:00</option>
-
-            <option value="20:00">20:00</option>
-            <option value="21:00">21:00</option>
-            <option value="22:00">22:00</option>
-            <option value="23:00">23:00</option>
-            <option value="00:00">00:00</option>
+            {horarios.map((horario) => (
+              <option
+                key={horario.id_horario}
+                value={horario.id_horario}
+              >
+                {horario.hora.slice(0, 5)}
+              </option>
+            ))}
           </select>
         </label>
-
         <label>
-          Personas:
-          <input
-            type="number"
-            name="personas"
-            value={formData.personas}
-            min="1"
-            max="20"
-            required
+            Cantidad de comensales:
+
+            <input
+              type="number"
+              name="personas"
+              value={formData.personas}
+              min="1"
+              max="20"
+              required
+              onChange={handleChange}
+            />
+          </label>
+
+        <label className="full-width">
+          Observaciones
+
+          <textarea
+            name="observaciones"
+            value={formData.observaciones}
             onChange={handleChange}
+            placeholder="Cumpleaños, mesa cerca de la ventana, silla para bebé..."
           />
         </label>
 
