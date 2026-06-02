@@ -7,6 +7,8 @@ import Usuarios from "../pages/Usuarios";
 import Login from "../pages/Login";
 import Registro from "../pages/Registro";
 import ComoReservar from "../components/home/ComoReservar/ComoReservar";
+import Dashboard from "../pages/Dashboard";
+import MisReservas from "../pages/MisReservas";
 export const Rutas = () => {
   return (
     <BrowserRouter>
@@ -19,9 +21,12 @@ export const Rutas = () => {
         <Route path="/usuarios" element={<Usuarios />} />
 
         <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
+        <Route path="/register" element={<Registro />} />
 
         <Route path="/comoreservar" element={<ComoReservar />} />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/mis-reservas" element={<MisReservas />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

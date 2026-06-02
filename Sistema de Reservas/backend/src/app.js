@@ -4,12 +4,14 @@ import cors from "cors";
 import { conectarDB, sequelize } from "./database/connection.js";
 import "./models/associations.js";
 import authRoutes from "./routes/authRoutes.js";
+import reservaRoutes from "./routes/reservaRoutes.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api", reservaRoutes);
 
 
 const PORT = 3000;

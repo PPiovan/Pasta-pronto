@@ -1,29 +1,34 @@
-import "./loginForm.css"
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import "./registerForm.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const LoginForm = () => {
-    const navigate = useNavigate();
+const RegisterForm = () => {
+
     const [mensaje, setMensaje] = useState("");
     const [error, setError] = useState(false);
+
     const [formData, setFormData] = useState({
+        nombre: "",
+        apellido: "",
         email: "",
-        password: ""
-    })
+        password: "",
+        telefono: ""
+    });
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
         try {
+
             const response = await fetch(
-                "http://localhost:3000/api/auth/login",
+                "http://localhost:3000/api/auth/register",
                 {
                     method: "POST",
                     headers: {
@@ -36,18 +41,17 @@ const LoginForm = () => {
             const data = await response.json();
 
             if (response.ok) {
+
                 setError(false);
                 setMensaje(data.mensaje);
 
-                localStorage.setItem(
-                    "usuario",
-                    JSON.stringify(data.usuario)
-                );
-              if (data.usuario.rol === 1) {
-                    navigate("/dashboard");
-                } else if (data.usuario.rol === 3) {
-                    navigate("/mis-reservas");
-                }
+                setFormData({
+                    nombre: "",
+                    apellido: "",
+                    email: "",
+                    password: "",
+                    telefono: ""
+                });
 
             } else {
 
@@ -58,23 +62,43 @@ const LoginForm = () => {
 
         } catch (error) {
 
-            console.error(error);
-
-            alert("Error al conectar con el servidor");
+            setError(true);
+            setMensaje("Error al conectar con el servidor");
 
         }
     };
 
     return (
-        <section className="form-login">
+        <section className="form-register">
 
             <form onSubmit={handleSubmit}>
 
-                <h1>Iniciar Sesión</h1>
+                <h1>Registrarse</h1>
+
+                <label>
+                    NOMBRE
+                    <input
+                        type="text"
+                        name="nombre"
+                        placeholder="Ingresá tu nombre"
+                        value={formData.nombre}
+                        onChange={handleChange}
+                    />
+                </label>
+
+                <label>
+                    APELLIDO
+                    <input
+                        type="text"
+                        name="apellido"
+                        placeholder="Ingresá tu apellido"
+                        value={formData.apellido}
+                        onChange={handleChange}
+                    />
+                </label>
 
                 <label>
                     EMAIL
-
                     <input
                         type="email"
                         name="email"
@@ -86,12 +110,22 @@ const LoginForm = () => {
 
                 <label>
                     PASSWORD
-
                     <input
                         type="password"
                         name="password"
                         placeholder="Ingresá tu contraseña"
                         value={formData.password}
+                        onChange={handleChange}
+                    />
+                </label>
+
+                <label>
+                    TELEFONO
+                    <input
+                        type="text"
+                        name="telefono"
+                        placeholder="Ingresa tu telefono"
+                        value={formData.telefono}
                         onChange={handleChange}
                     />
                 </label>
@@ -101,17 +135,17 @@ const LoginForm = () => {
                     </p>
                 )}
                 <button type="submit">
-                    INGRESAR
+                    REGISTRARSE
                 </button>
-
                 <p className="form-link">
-                    ¿Aún no tenés cuenta?
-                    <Link to="/register"> Registrate</Link>
+                    ¿Ya tenes cuenta?
+                    <Link to="/login"> Inicia sesion</Link>
                 </p>
+
             </form>
 
         </section>
-    )
-}
+    );
+};
 
-export default LoginForm
+export default RegisterForm;    

@@ -27,3 +27,10 @@
   padding: 16px 26px;
   opacity: 1 !important;
 }
+.nav button {
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}

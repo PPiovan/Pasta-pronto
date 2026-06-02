@@ -1,17 +1,17 @@
 import { Router } from "express";
-import { Reserva } from "../models/Reserva.js";
+
+import {
+    crearReserva,
+    obtenerReservas,
+    obtenerReservasUsuario
+} from "../controllers/reservas/ReservaController.js";
 
 const router = Router();
 
-// TEST: crear reserva
-router.post("/reservas", async (req, res) => {
-  try {
-    const nueva = await Reserva.create(req.body);
-    res.json(nueva);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Error al crear reserva" });
-  }
-});
-
+router.post("/reservas", crearReserva);
+router.get("/reservas", obtenerReservas);
+router.get(
+    "/reservas/usuario/:id",
+    obtenerReservasUsuario
+);
 export default router;
