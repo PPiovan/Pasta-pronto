@@ -3,7 +3,7 @@ import cors from "cors";
 
 import { conectarDB, sequelize } from "./database/connection.js";
 import "./models/associations.js";
-import authRoutes from "./routes/authRoutes.js";
+import  authRoutes  from "./routes/authRoutes.js";
 import reservaRoutes from "./routes/reservaRoutes.js";
 
 const app = express();

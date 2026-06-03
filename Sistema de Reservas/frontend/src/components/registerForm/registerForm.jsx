@@ -8,11 +8,12 @@ const RegisterForm = () => {
     const [error, setError] = useState(false);
 
     const [formData, setFormData] = useState({
-        nombre: "",
-        apellido: "",
-        email: "",
-        password: "",
-        telefono: ""
+    nombre: "",
+    apellido: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    telefono: ""
     });
 
     const handleChange = (e) => {
@@ -26,7 +27,6 @@ const RegisterForm = () => {
         e.preventDefault();
 
         try {
-
             const response = await fetch(
                 "http://localhost:3000/api/auth/register",
                 {
@@ -50,6 +50,7 @@ const RegisterForm = () => {
                     apellido: "",
                     email: "",
                     password: "",
+                    confirmPassword: "",
                     telefono: ""
                 });
 
@@ -115,6 +116,17 @@ const RegisterForm = () => {
                         name="password"
                         placeholder="Ingresá tu contraseña"
                         value={formData.password}
+                        onChange={handleChange}
+                    />
+                </label>
+
+                <label>
+                    CONFIRMAR PASSWORD
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Repetí tu contraseña"
+                        value={formData.confirmPassword}
                         onChange={handleChange}
                     />
                 </label>

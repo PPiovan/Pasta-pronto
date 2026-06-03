@@ -59,26 +59,23 @@ export const login = async (req, res) => {
 };
 
 export const register = async (req, res) => {
-    try {
+  try {
+    
+    const {
+      nombre,
+      apellido,
+      email,
+      password,
+      confirmPassword,
+      telefono
+    } = req.body;
+    console.log("BODY RECIBIDO:", req.body);
 
-        const {
-            nombre,
-            apellido,
-            email,
-            password,
-            telefono
-        } = req.body;
-
-        if (
-            !nombre ||
-            !apellido ||
-            !email ||
-            !password
-        ) {
-            return res.status(400).json({
-                mensaje: "Todos los campos son obligatorios"
-            });
-        }
+       if (!nombre || !apellido || !email || !password || !confirmPassword) {
+          return res.status(400).json({
+              mensaje: "Todos los campos son obligatorios"
+          });
+      }
 
         const existeUsuario = await Usuario.findOne({
             where: { email }
@@ -90,10 +87,11 @@ export const register = async (req, res) => {
             });
         }
 
-        if (formData.password !== formData.confirmPassword) {
-            alert("Las contraseñas no coinciden");
-            return;
-        }
+        if (password !== confirmPassword) {
+          return res.status(400).json({
+              mensaje: "Las contraseñas no coinciden"
+          });
+      }
 
         const passwordHash = await bcrypt.hash(
             password,
