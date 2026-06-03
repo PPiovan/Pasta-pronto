@@ -17,6 +17,7 @@ const MisReservas = () => {
           `http://localhost:3000/api/reservas/usuario/${user.id}`
         );
         const data = await response.json();
+        console.log("RESERVAS:", data);
         setReservas(data);
       } catch (error) {
         console.error(error);
@@ -27,6 +28,11 @@ const MisReservas = () => {
       obtenerReservas();
     }
   }, [user]);
+
+  // Elimina la card del estado sin recargar la página
+  const handleCancelar = (id_reserva) => {
+    setReservas((prev) => prev.filter((r) => r.id_reserva !== id_reserva));
+  };
 
   return (
     <div className="page-wrapper">
@@ -40,7 +46,11 @@ const MisReservas = () => {
         ) : (
           <div className="reservas-grid">
             {reservas.map((reserva) => (
-              <ReservaCard key={reserva.id_reserva} reserva={reserva} />
+              <ReservaCard
+                key={reserva.id_reserva}
+                reserva={reserva}
+                onCancelar={handleCancelar}
+              />
             ))}
           </div>
         )}

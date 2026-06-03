@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { RutaPrivada, RutaAdmin, RutaSuperAdmin } from "./PrivateRoutes";
 
 import Inicio from "../pages/Inicio";
 import Reservas from "../pages/Reservas";
@@ -9,26 +10,42 @@ import Registro from "../pages/Registro";
 import ComoReservar from "../components/home/ComoReservar/ComoReservar";
 import Dashboard from "../pages/Dashboard";
 import MisReservas from "../pages/MisReservas";
+
 export const Rutas = () => {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* Rutas públicas */}
         <Route path="/" element={<Inicio />} />
         <Route path="/inicio" element={<Inicio />} />
-
-        <Route path="/reservas" element={<Reservas />} />
-        <Route path="/mesas" element={<Mesas />} />
-        <Route path="/usuarios" element={<Usuarios />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registro />} />
-
         <Route path="/comoreservar" element={<ComoReservar />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/mis-reservas" element={<MisReservas />} />
+        {/* Rutas solo para clientes logueados */}
+        <Route path="/reservas" element={
+          <RutaPrivada><Reservas /></RutaPrivada>
+        } />
+        <Route path="/mis-reservas" element={
+          <RutaPrivada><MisReservas /></RutaPrivada>
+        } />
+
+        {/* Rutas solo para Admin y SuperAdmin */}
+        <Route path="/dashboard" element={
+          <RutaAdmin><Dashboard /></RutaAdmin>
+        } />
+        <Route path="/mesas" element={
+          <RutaAdmin><Mesas /></RutaAdmin>
+        } />
+
+        {/* Rutas solo para SuperAdmin */}
+        <Route path="/usuarios" element={
+          <RutaSuperAdmin><Usuarios /></RutaSuperAdmin>
+        } />
 
         <Route path="*" element={<Navigate to="/" />} />
+
       </Routes>
     </BrowserRouter>
   );
