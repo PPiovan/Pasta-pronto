@@ -1,6 +1,7 @@
 import "../../styles/registerForm.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../layouts/Nav/Nav";
 
 const RegisterForm = () => {
 
@@ -71,7 +72,7 @@ const RegisterForm = () => {
 
     return (
         <section className="form-register">
-
+            <Nav/>
             <form onSubmit={handleSubmit}>
 
                 <h1>Registrarse</h1>

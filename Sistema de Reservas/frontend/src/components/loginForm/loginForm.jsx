@@ -2,6 +2,7 @@ import "../../styles/loginForm.css"
 import { useState } from "react"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import Nav from "../layouts/Nav/Nav";
 
 const LoginForm = () => {
     const location = useLocation();
@@ -70,6 +71,7 @@ const LoginForm = () => {
 
     return (
         <section className="form-login">
+            <Nav/>
 
             <form onSubmit={handleSubmit}>
 
