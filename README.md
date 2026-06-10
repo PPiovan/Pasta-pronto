@@ -178,4 +178,4 @@ Al crear una reserva el sistema:
 ## 👤 Autor
 
 **Pablo Piovan**  
-[GitHub](https://github.com/TU_USUARIO) · [LinkedIn](https://linkedin.com/in/TU_USUARIO)
+[GitHub](https://github.com/PPiovan) · [LinkedIn](https://linkedin.com/in/pablo-piovan)
