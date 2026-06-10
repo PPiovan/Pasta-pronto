@@ -4,7 +4,7 @@ import '../../../styles/Footer.css';
 const Footer = () => {
   return (
     <footer className='footer'>
-        &copy; Proyecto React--<a href='#'>Web</a>
+        &copy; Trabajo Practico Programacion--<a href='#'>III</a>
     </footer>
   )
 }

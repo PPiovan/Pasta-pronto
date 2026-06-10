@@ -121,6 +121,42 @@
   font-size: 14px;
 }
 
+/* LOADING STATE */
+.form-login button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-login input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-loading {
+  background: #183d73 !important;
+}
+
+.login-spinner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.login-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 @media (max-width: 700px) {
 
   .form-login form {
@@ -130,6 +166,7 @@
   .form-login h1 {
     font-size: 34px;
   }
+
 
 }
 

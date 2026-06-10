@@ -27,8 +27,11 @@ MovimientoReserva.belongsTo(Reserva, { foreignKey: "id_reserva" });
 Usuario.hasMany(MovimientoReserva, { foreignKey: "id_usuario" });
 MovimientoReserva.belongsTo(Usuario, { foreignKey: "id_usuario" });
 
+Mesa.hasMany(Reserva, { foreignKey: "id_mesa" });
+Reserva.belongsTo(Mesa, { foreignKey: "id_mesa" });
+
 // Estos no tienen relación directa todavía,
 // pero hay que importarlos para que Sequelize cree sus tablas
 // Me paso un error que no los habia puesto y no lo creaba la base de datos pero ya se soluciono
-Mesa;
+
 ConfiguracionRestaurante;

@@ -1,53 +1,110 @@
 .experiencia {
   background: #f3efe9;
-  padding: 100px 10%;
+  padding: 110px 10%;
 }
 
 .exp-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 80px;
   align-items: center;
 }
 
-/* TEXTO */
-.exp-texto h2 {
-  font-family: Georgia, serif;
-  font-size: 48px;
-  margin: 20px 0;
-  line-height: 1.2;
-}
-
-.exp-texto p {
-  color: #444;
-  line-height: 1.7;
+.exp-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #183d73;
+  font-weight: 700;
   margin-bottom: 18px;
 }
 
-.exp-label {
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #3a4a6b;
-  font-weight: bold;
+.exp-texto h2 {
+  font-family: Georgia, serif;
+  font-size: 46px;
+  font-weight: 400;
+  margin: 0 0 24px;
+  line-height: 1.15;
+  color: #111;
 }
 
-.exp-footer {
-  margin-top: 30px;
+.exp-texto p {
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.exp-stats {
   display: flex;
-  gap: 20px;
-  font-size: 13px;
-  color: #3a4a6b;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid #ddd;
 }
 
-/* GALERIA */
+.exp-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exp-stat-valor {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #183d73;
+  line-height: 1;
+}
+
+.exp-stat-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .exp-galeria {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-rows: auto auto;
+  gap: 14px;
 }
 
-.exp-galeria img {
+.exp-galeria-principal {
+  grid-column: span 2;
+}
+
+.exp-galeria-principal img {
   width: 100%;
-  border-radius: 10px;
+  height: 280px;
   object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.exp-galeria-secundarias {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.exp-galeria-secundarias img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.exp-galeria-secundarias img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 900px) {
+  .exp-container { grid-template-columns: 1fr; gap: 50px; }
+  .exp-texto h2 { font-size: 36px; }
 }

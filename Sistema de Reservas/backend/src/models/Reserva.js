@@ -15,6 +15,10 @@ export const Reserva = sequelize.define("Reserva", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  id_mesa: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
   fecha: {
     type: DataTypes.DATEONLY,
     allowNull: false,
@@ -24,7 +28,7 @@ export const Reserva = sequelize.define("Reserva", {
     allowNull: false,
   },
   estado: {
-    type: DataTypes.ENUM("confirmada", "cancelada", "modificada", "finalizada"),
+    type: DataTypes.ENUM("pendiente", "confirmada", "cancelada", "modificada", "finalizada"),
     defaultValue: "confirmada",
   },
   observaciones: {

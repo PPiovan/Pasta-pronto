@@ -3,7 +3,8 @@ import { Router } from "express";
 import {
     crearReserva,
     obtenerReservas,
-    obtenerReservasUsuario
+    obtenerReservasUsuario,
+    cancelarReserva
 } from "../controllers/reservas/ReservaController.js";
 
 import {
@@ -13,13 +14,9 @@ import {
 const router = Router();
 
 router.post("/reservas", crearReserva);
-
 router.get("/reservas", obtenerReservas);
-
-router.get(
-    "/reservas/usuario/:id",
-    obtenerReservasUsuario
-);
+router.get("/reservas/usuario/:id", obtenerReservasUsuario);
+router.delete("/reservas/:id", cancelarReserva);
 
 router.get("/horarios", obtenerHorarios);
 

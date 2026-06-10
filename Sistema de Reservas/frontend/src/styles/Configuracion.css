@@ -1,0 +1,267 @@
+.configuracion { width: 100%; }
+
+.conf-titulo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+  margin: 0 0 24px;
+}
+
+.conf-bloque {
+  background: #fff;
+  border-radius: 12px;
+  border: 0.5px solid #e5e5e5;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.conf-bloque-header {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid #f0f0f0;
+}
+
+.conf-bloque-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  margin: 0 0 6px;
+}
+
+.conf-bloque-header p {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.conf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.conf-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.conf-label input {
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+
+.conf-label input:focus { border-color: #111; }
+
+.conf-ok {
+  font-size: 13px;
+  color: #065f46;
+  background: #d1fae5;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin: 0 0 16px;
+}
+
+.conf-error {
+  font-size: 13px;
+  color: #991b1b;
+  background: #fee2e2;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin: 0 0 16px;
+}
+
+.conf-btn-guardar {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.conf-btn-guardar:hover { background: #333; }
+.conf-btn-guardar:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* HORARIOS */
+.conf-horario-add {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.conf-horario-add input {
+  padding: 9px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+
+.conf-horario-add input:focus { border-color: #111; }
+
+.conf-btn-agregar {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.conf-btn-agregar:hover { background: #333; }
+
+.conf-horarios-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conf-vacio { font-size: 13px; color: #aaa; margin: 0; }
+
+.conf-horario-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 0.5px solid #efefef;
+  transition: opacity 0.2s;
+}
+
+.conf-horario-item.inactivo { opacity: 0.5; }
+
+.conf-horario-hora {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111;
+  min-width: 80px;
+}
+
+.conf-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.badge-activo  { background: #d1fae5; color: #065f46; }
+.badge-inactivo { background: #fee2e2; color: #991b1b; }
+
+.conf-horario-acciones {
+  display: flex;
+  gap: 6px;
+}
+
+.conf-horario-acciones button {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+}
+
+.conf-horario-acciones button:hover { opacity: 0.75; }
+
+.btn-desactivar { background: #fef3c7; color: #92400e; }
+.btn-activar    { background: #d1fae5; color: #065f46; }
+.btn-eliminar   { background: #fee2e2; color: #991b1b; }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  padding: 16px 20px;
+  background: #111;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 8px;
+  padding: 14px 20px;
+  border-top: 0.5px solid #f0f0f0;
+}
+
+.modal-footer button {
+  flex: 1;
+  padding: 9px 0;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.btn-cancelar-modal { background: #f0f0f0; color: #444; }
+.btn-cancelar-modal:hover { background: #e0e0e0; }
+.btn-eliminar-confirm { background: #fee2e2; color: #991b1b; }
+.btn-eliminar-confirm:hover { opacity: 0.8; }

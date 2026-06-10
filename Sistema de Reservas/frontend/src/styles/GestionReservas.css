@@ -259,3 +259,74 @@
 
 .btn-guardar { background: #111; color: #fff; }
 .btn-guardar:hover { background: #333; }
+
+/* BOTÓN HISTORIAL */
+.btn-historial {
+  background: #f0f0f0;
+  color: #444;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-historial:hover { opacity: 0.8; }
+
+/* MODAL HISTORIAL */
+.modal-historial {
+  max-width: 500px !important;
+}
+
+.historial-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.historial-item {
+  padding: 14px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 0.5px solid #efefef;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.historial-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.historial-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.historial-fecha {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.historial-desc {
+  font-size: 13px;
+  color: #444;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.historial-usuario {
+  font-size: 11px;
+  color: #aaa;
+  font-style: italic;
+}

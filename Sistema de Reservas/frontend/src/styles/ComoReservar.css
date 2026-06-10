@@ -1,50 +1,107 @@
-.section-dark {
-  background: #0f0f0f;
-  color: white;
-  padding: 90px 12%;
-  text-align: center;
-}
-
-.section-light {
+.como-reservar {
   background: #f5efe7;
-  color: #111;
-  padding: 90px 12%;
+  padding: 110px 10%;
   text-align: center;
 }
 
-.section-label {
+.cr-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cr-header {
+  margin-bottom: 60px;
+}
+
+.cr-label {
   display: block;
   color: #c6a15b;
   letter-spacing: 5px;
   font-size: 12px;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-.section-dark h2,
-.section-light h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 42px;
+.como-reservar h2 {
+  font-family: Georgia, serif;
+  font-size: 44px;
   font-weight: 400;
-  margin-bottom: 20px;
+  color: #111;
+  margin-bottom: 14px;
 }
 
-.section-dark p,
-.section-light p {
-  max-width: 720px;
-  margin: 0 auto;
-  line-height: 1.7;
+.cr-header p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.steps {
-  margin-top: 45px;
+.cr-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
+  margin-bottom: 50px;
 }
 
-.steps article {
-  background: white;
-  padding: 32px;
-  border-radius: 4px;
+.cr-step {
+  background: #fff;
+  padding: 36px 28px;
+  border-radius: 8px;
+  text-align: left;
+  border: 0.5px solid #e5ddd4;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cr-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+}
+
+.cr-step-numero {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 42px;
+  color: #e5ddd4;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.cr-step h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.cr-step p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.cr-cta {
+  margin-top: 10px;
+}
+
+.cr-btn {
+  display: inline-block;
+  background: #183d73;
+  color: white;
+  text-decoration: none;
+  padding: 16px 36px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 2px;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.cr-btn:hover {
+  background: #10294d;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .cr-steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 50px; }
 }
